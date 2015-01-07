@@ -16,7 +16,7 @@ var Search = require('./views/search');
 var App = React.createClass({
   render: function(){
     return (
-      <div className="container">
+      <div>
         <RouteHandler/>
       </div>
     );
