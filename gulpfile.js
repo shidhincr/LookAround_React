@@ -138,7 +138,7 @@ gulp.task('json', function() {
 
 
 // Watch
-gulp.task('watch', ['html', 'bundle', 'serve'], function () {
+gulp.task('watch', ['default', 'serve'], function () {
 
     // Watch .json files
     gulp.watch('app/scripts/**/*.json', ['json']);
