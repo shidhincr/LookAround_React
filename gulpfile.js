@@ -2,22 +2,16 @@
 
 var gulp = require('gulp');
 var del = require('del');
-
-
 var path = require('path');
-
 
 // Load plugins
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream'),
-    
     sourceFile = './app/scripts/app.js',
-    
     destFolder = './dist/scripts',
     destFileName = 'app.js';
-
 
 // Styles
 gulp.task('styles', function () {
@@ -31,7 +25,6 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('dist/styles'))
         .pipe($.size());
 });
-
 
 // Scripts
 gulp.task('scripts', function () {
@@ -52,14 +45,8 @@ gulp.task('scripts', function () {
             .pipe(source(destFileName))
             .pipe(gulp.dest(destFolder));
     }
-
     return rebundle();
-
 });
-
-
-
-
 
 // HTML
 gulp.task('html', function () {
@@ -81,8 +68,6 @@ gulp.task('images', function () {
         .pipe($.size());
 });
 
-
-
 gulp.task('jest', function () {
     var nodeModules = path.resolve('./node_modules');
     return gulp.src('app/scripts/**/__tests__')
@@ -92,13 +77,10 @@ gulp.task('jest', function () {
         }));
 });
 
-
-
 // Clean
 gulp.task('clean', function (cb) {
     del(['dist/styles', 'dist/scripts', 'dist/images'], cb);
 });
-
 
 // Bundle
 gulp.task('bundle', ['styles', 'scripts', 'bower'], function(){
@@ -113,7 +95,7 @@ gulp.task('bundle', ['styles', 'scripts', 'bower'], function(){
 gulp.task('build', ['html', 'bundle', 'images']);
 
 // Default task
-gulp.task('default', ['clean', 'build', 'jest' ]);
+gulp.task('default', ['clean', 'build']);
 
 // Webserver
 gulp.task('serve', function () {
@@ -128,14 +110,12 @@ gulp.task('serve', function () {
 gulp.task('bower', function() {
     gulp.src('app/bower_components/**/*.js', {base: 'app/bower_components'})
         .pipe(gulp.dest('dist/bower_components/'));
-
 });
 
 gulp.task('json', function() {
     gulp.src('app/scripts/json/**/*.json', {base: 'app/scripts'})
         .pipe(gulp.dest('dist/scripts/'));
 });
-
 
 // Watch
 gulp.task('watch', ['html', 'bundle', 'serve'], function () {
@@ -146,12 +126,8 @@ gulp.task('watch', ['html', 'bundle', 'serve'], function () {
     // Watch .html files
     gulp.watch('app/*.html', ['html']);
 
-    
     // Watch .scss files
     gulp.watch('app/styles/**/*.scss', ['styles']);
-    
-
-
 
     // Watch image files
     gulp.watch('app/images/**/*', ['images']);
