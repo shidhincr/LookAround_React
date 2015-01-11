@@ -1,6 +1,6 @@
 var React = require('react');
 var Router = require('react-router');
-var Zipcode = require('../ui/zipcode.js');
+var ZipcodeDialog = require('../ui/ZipcodeDialog.js');
 var Link = Router.Link;
 
 var Home  = React.createClass({
@@ -8,7 +8,7 @@ var Home  = React.createClass({
         var tempStyle = { backgroundColor: '#fff', padding:'10px' };
         return (
             <div className="map-background">
-                <Zipcode />
+                <ZipcodeDialog />
             </div>
         )
     }
