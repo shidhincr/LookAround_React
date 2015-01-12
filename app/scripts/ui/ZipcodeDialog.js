@@ -8,14 +8,15 @@ var ZipcodeDialog = React.createClass({
     displayName: 'ZipcodeDialog',
     render: function(){
         return(
-            <Modal title="Enter your zipcode" closeButton={false}>
+            <Modal title="Enter your zipcode" closeButton={false} onRequestHide={this.onHide}>
                 <div className="modal-body">
                     <ZipcodeInput />
                 </div>
-                <div className="modal-footer"></div>
+                <div className="modal-footer">&nbsp;</div>
             </Modal>
         );
-    }
+    },
+    onHide: function(){}
 });
 
 module.exports = ZipcodeDialog;

@@ -6,14 +6,15 @@ var Button  = require('react-bootstrap/Button');
 var ZipcodeInput = React.createClass({
     displayName: 'ZipcodeInput',
     render: function(){
+        var zipcodeComponentStyle = {width: '300px'}; 
         return(
-            <div className="zipcodeComponent">
+            <div className="zipcodeComponent" style={zipcodeComponentStyle}>
                 <Input
                     type="text"
                     placeholder="560068"
                     className="zipcodeInput"
+                    buttonAfter={<Button bsStyle="primary">Go</Button>}
                 />
-                <Button bsStyle="primary">Go</Button>
             </div>
         );
     }
