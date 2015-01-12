@@ -19,3 +19,14 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/";
     bottom: 0;
     right: 0;
 }
+
+.zipcodeInput{
+    width: 250px;
+}
+
+
+/* .modal-backdrop fix */
+.modal-backdrop {
+    bottom: 0;
+    background-color: #fff;
+}
