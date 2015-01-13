@@ -18,8 +18,7 @@ var Map = React.createClass({
             center: this.getMapCenter(),
             zoom: this.props.initialZoom
         };
-        //TODO:: Ivin: Couldnt find a way to pass the dom reference from the place of usage. Hardcoding for now.
-        var map = new google.maps.Map( $('.map-background')[0], mapSettings );
+        var map = new google.maps.Map( this.refs.mapBackground.getDOMNode(), mapSettings );
         this.setState({map: map});
     },
     componentDidUpdate: function(){
@@ -28,7 +27,7 @@ var Map = React.createClass({
     },
     render: function(){
         return (
-            <div className='map'></div>
+            <div className='map-background' ref='mapBackground'></div>
         );
     }
 });
