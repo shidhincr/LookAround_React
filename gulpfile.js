@@ -57,9 +57,12 @@ gulp.task('scripts', function () {
 
 });
 
-
-
-
+// static resources
+gulp.task('static', function () {
+    return gulp.src('app/data/**/*')
+        .pipe(gulp.dest('dist/data'))
+        .pipe($.size());
+});
 
 // HTML
 gulp.task('html', function () {
@@ -101,7 +104,7 @@ gulp.task('clean', function (cb) {
 
 
 // Bundle
-gulp.task('bundle', ['styles', 'scripts', 'bower'], function(){
+gulp.task('bundle', ['styles', 'scripts', 'static', 'bower'], function(){
     return gulp.src('./app/*.html')
                .pipe($.useref.assets())
                .pipe($.useref.restore())
