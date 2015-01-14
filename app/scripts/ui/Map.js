@@ -1,7 +1,8 @@
+'use strict';
+
 var React  = require('react');
 var Router = require('react-router');
 
-/** @jsx React.DOM */
 var Map = React.createClass({
     getDefaultProps: function(){
         return{
