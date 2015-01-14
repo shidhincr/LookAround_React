@@ -4,9 +4,16 @@ var React = require('react');
 var Input   = require('react-bootstrap/Input');
 var _ = require('lodash');
 var request = require('superagent');
+var Router = require('react-router');
 var initialPlaces = [];
 
+
+var makeValidRegex = function(text){
+  return text.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\$&").replace(/^\s+|\s+$/gm,'');
+};
+
 var Filters = React.createClass({
+    mixins: [Router.State],
     displayName: 'Filters',
     getInitialState: function(){
         return { places: initialPlaces };
@@ -24,11 +31,12 @@ var Filters = React.createClass({
         });
     },
     render: function () {
+        var zipcode = this.getParams().zipcode;
         var list = _.map(this.state.places, function(place, index){
                         var key = [place.url.replace(/\//,''),index].join('_');
                         return (
                             <li key={key}>
-                                <a href={'#/search'+place.url}>
+                                <a href={'#/search/'+ zipcode + place.url}>
                                     {place.title}
                                 </a>
                             </li>)
@@ -50,7 +58,8 @@ var Filters = React.createClass({
      * @return {[type]} [description]
      */
     filterPlaces: function(){
-        var rgx = new RegExp(this.refs.searchPlace.getValue(), 'ig');
+        var filterQuery = makeValidRegex(this.refs.searchPlace.getValue());
+        var rgx = new RegExp(filterQuery, 'ig');
         var filteredPlaces = _.filter(initialPlaces, function(place){
             return Boolean(place.url.match(rgx));
         });
