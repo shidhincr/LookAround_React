@@ -24,9 +24,20 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/";
     width: 250px;
 }
 
+/* Search page view */
+
+.bs-docs-sidebar.places-container {
+  max-height: 600px;
+  overflow: scroll;
+}
 
 /* .modal-backdrop fix */
 .modal-backdrop {
     bottom: 0;
     background-color: #fff;
+}
+
+/* utils */
+.m-bottom {
+  margin-bottom: 10px;
 }

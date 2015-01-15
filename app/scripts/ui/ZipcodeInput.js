@@ -1,8 +1,9 @@
+'use strict';
+
 var React   = require('react');
 var Input   = require('react-bootstrap/Input');
 var Button  = require('react-bootstrap/Button');
 
-/** @jsx React.DOM */
 var ZipcodeInput = React.createClass({
     displayName: 'ZipcodeInput',
     render: function(){

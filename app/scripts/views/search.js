@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var Header = require('../ui/header.js');
 var Filters = require('../ui/filters.js');
@@ -11,17 +13,17 @@ var Search  = React.createClass({
     render: function(){
         return (
             <Grid fluid>
-                <Row>
+                <div className='row-fluid'>
                     <Header />
-                </Row>
-                <Row>
-                    <Col xs={3}>
+                </div>
+                <div className='row-fluid'>
+                    <Col xs={3} className='container well'>
                         <Filters />
                     </Col>
                     <Col xs={9}>
                         <Results />
                     </Col>
-                </Row>
+                </div>
             </Grid>
         );
     }

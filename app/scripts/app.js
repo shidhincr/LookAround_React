@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+'use strict';
 
 var React = window.React = require('react');
 var Timer = require("./ui/Timer");
@@ -25,7 +25,7 @@ var App = React.createClass({
 
 var routes = (
   <Route name="app" path="/" handler={App}>
-    <Route name="search" handler={Search}/>
+    <Route name="search" path="/search/:zipcode/:place" handler={Search}/>
     <DefaultRoute handler={Home}/>
     <NotFoundRoute handler={Home} />
   </Route>
