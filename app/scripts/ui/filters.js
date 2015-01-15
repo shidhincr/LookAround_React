@@ -7,7 +7,11 @@ var request = require('superagent');
 var Router = require('react-router');
 var initialPlaces = [];
 
-
+/**
+ * Escape the regex characters and trim the space.
+ * @param  {[String]} text
+ * @return {[String]}      [return a valid regex expression string]
+ */
 var makeValidRegex = function(text){
   return text.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\$&").replace(/^\s+|\s+$/gm,'');
 };
