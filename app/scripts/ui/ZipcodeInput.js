@@ -6,19 +6,20 @@ var Button  = require('react-bootstrap/Button');
 
 var ZipcodeInput = React.createClass({
     displayName: 'ZipcodeInput',
-    validate: function(e){
+    getInitialState: function(){
+        return  {isZipcodeValid: false};
+    },
+    _validate: function(e){
         var zipcodeRegex = /^\d{6}$/;
         var zipcode = e.target.value;
         if( zipcode.length ){
             if( zipcodeRegex.test(zipcode) ){
-                $('.goButton').removeAttr('disabled');
-                $('.zipcodeValidCheck').show();
+                this.setState({isZipcodeValid: true});
             }else{
-                $('.goButton').attr('disabled','disabled');
-                $('.zipcodeValidCheck').hide();
+                this.setState({isZipcodeValid: false});
             }
         }else{
-            $('.zipcodeValidCheck').hide();
+            this.setState({isZipcodeValid: false});
         }
     },
     render: function(){
@@ -29,10 +30,12 @@ var ZipcodeInput = React.createClass({
                     type="text"
                     placeholder="560068"
                     className="zipcodeInput"
-                    buttonAfter={<Button bsStyle="primary" className="goButton" disabled>Go</Button>}
-                    onChange={this.validate}
+                    buttonAfter={<Button bsStyle="primary" className="goButton" disabled={!this.state.isZipcodeValid}>Go</Button>}
+                    onChange={this._validate}
                 />
-                <span className="zipcodeValidCheck">Valid zipcode</span>
+                {this.state.isZipcodeValid &&
+                    <span className="zipcodeValidCheck">Valid zipcode</span>
+                }
             </div>
         );
     }
