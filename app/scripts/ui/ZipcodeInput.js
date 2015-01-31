@@ -14,13 +14,16 @@ var ZipcodeInput = React.createClass({
         var zipcode = e.target.value;
         if( zipcode.length ){
             if( zipcodeRegex.test(zipcode) ){
-                this.setState({isZipcodeValid: true});
+                this.setState({isZipcodeValid: true, zipcode: zipcode});
             }else{
                 this.setState({isZipcodeValid: false});
             }
         }else{
             this.setState({isZipcodeValid: false});
         }
+    },
+    _search: function(){
+        window.location = "#/search/"+this.state.zipcode+"/atm";
     },
     render: function(){
         var zipcodeComponentStyle = {width: '300px'};
@@ -29,12 +32,11 @@ var ZipcodeInput = React.createClass({
                 <Input
                     type="text"
                     placeholder="560068"
-                    className="zipcodeInput"
-                    buttonAfter={<Button bsStyle="primary" className="goButton" disabled={!this.state.isZipcodeValid}>Go</Button>}
+                    buttonAfter={<Button bsStyle="primary" className="goButton" disabled={!this.state.isZipcodeValid} onClick={this._search}>Go</Button>}
                     onChange={this._validate}
                 />
                 {this.state.isZipcodeValid &&
-                    <span className="zipcodeValidCheck">Valid zipcode</span>
+                    <span className="alert-success">Valid zipcode</span>
                 }
             </div>
         );
