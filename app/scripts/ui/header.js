@@ -3,6 +3,7 @@
 var React = require('react');
 var Navbar = require('react-bootstrap/Navbar');
 var Nav = require('react-bootstrap/Nav');
+var ZipcodeInput = require('./ZipcodeInput.js');
 
 var Header = React.createClass({
     displayName: 'Header',
@@ -11,7 +12,7 @@ var Header = React.createClass({
             <div>
                 <Navbar inverse>
                     <Nav>
-                        This is the navigation
+                        <ZipcodeInput />
                     </Nav>
                 </Navbar>
             </div>
