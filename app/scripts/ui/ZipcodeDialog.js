@@ -11,7 +11,7 @@ var ZipcodeDialog = React.createClass({
         return(
             <Modal title="Enter your zipcode" closeButton={false} onRequestHide={this.onHide}>
                 <div className="modal-body">
-                    <ZipcodeInput />
+                    <ZipcodeInput ackWhenValid={true} />
                 </div>
                 <div className="modal-footer">&nbsp;</div>
             </Modal>
