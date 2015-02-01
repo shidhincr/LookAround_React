@@ -12,7 +12,7 @@ var Header = React.createClass({
             <div>
                 <Navbar inverse>
                     <Nav>
-                        <ZipcodeInput isSuccessAckNeeded={false} />
+                        <ZipcodeInput ackWhenValid={false} />
                     </Nav>
                 </Navbar>
             </div>
