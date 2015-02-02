@@ -12,7 +12,7 @@ var Results = React.createClass({
             <div className="results-section">
                 <TabbedArea defaultActiveKey={1}>
                     <TabPane eventKey={1} tab="Map view">
-                        <Map />
+                        <Map zipcode={this.props.zipcode}/>
                     </TabPane>
                     <TabPane eventKey={2} tab="List view">
                         List of Results here

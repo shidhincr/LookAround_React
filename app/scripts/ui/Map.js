@@ -4,29 +4,27 @@ var React  = require('react');
 var Router = require('react-router');
 
 var Map = React.createClass({
-    getDefaultProps: function(){
-        return{
-            initialZoom: 15,
-            centerLat: 12.97160,
-            centerLng: 77.59456
-        };
-    },
-    getMapCenter: function(){
-        return new google.maps.LatLng(this.props.centerLat,this.props.centerLng);
-    },
-    componentDidMount: function(rootNode){
-        var mapSettings = {
-            center: this.getMapCenter(),
-            zoom: this.props.initialZoom
-        };
-        var map = new google.maps.Map( this.refs.mapBackground.getDOMNode(), mapSettings );
-        this.setState({map: map});
-    },
-    componentDidUpdate: function(){
-        var map = this.state.map;
-        map.panTo( this.getMapCenter() );
+    _getMapCenter: function(){
+        var location,
+            latlng,
+            mapSettings,
+            map,
+            _this = this,
+            geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode( {'address': _this.props.zipcode}, function( results, status ){
+            location = results[ 0 ].geometry.location;
+            latlng = new google.maps.LatLng( location.k, location.D );
+            mapSettings = {
+                center: latlng,
+                zoom: 15
+            };
+            map = new google.maps.Map( _this.refs.mapBackground.getDOMNode(), mapSettings );
+            map.panTo( latlng );
+        });
     },
     render: function(){
+        this._getMapCenter();
         return (
             <div className='map-background' ref='mapBackground'></div>
         );

@@ -11,7 +11,7 @@ var Home  = React.createClass({
         var tempStyle = { backgroundColor: '#fff', padding:'10px' };
         return (
             <div className="home-page">
-                <Map />
+                <Map zipcode={'683518'}/>
                 <ZipcodeDialog />
             </div>
         )

@@ -32,6 +32,7 @@ var ZipcodeInput = React.createClass({
                 <Input
                     type="text"
                     placeholder="560068"
+                    defaultValue={this.props.zipcode}
                     buttonAfter={<Button bsStyle="primary" className="goButton" disabled={!this.state.isZipcodeValid} onClick={this._search}>Go</Button>}
                     onChange={this._validate}
                 />

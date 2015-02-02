@@ -10,15 +10,16 @@ var Col     = require('react-bootstrap/Col');
 
 var Search  = React.createClass({
     render: function(){
+        var zipcode = location.href.split(/search\//)[1].match(/\d+/g)[0];
         return (
             <Grid fluid>
-                <Header />
+                <Header zipcode={zipcode}/>
                 <div className='row-fluid clearfix'>
                     <Col xs={3} className='filters'>
                         <Filters />
                     </Col>
                     <Col xs={9}>
-                        <Results />
+                        <Results zipcode={zipcode}/>
                     </Col>
                 </div>
             </Grid>
