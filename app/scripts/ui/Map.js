@@ -2,14 +2,17 @@
 
 var React  = require('react');
 var Router = require('react-router');
+var Q = require('q');
 
 var Map = React.createClass({
-    _getGeocode: function(zipcode, callback){
+    _getGeocode: function(zipcode){
         var location, geocoder = new google.maps.Geocoder();
+        var defer = Q.defer();
         geocoder.geocode( {'address': zipcode}, function( results, status ){
             location = results[ 0 ].geometry.location;
-            callback( location );
+            defer.resolve( location );
         });
+        return defer.promise;
     },
     _setMapCenter: function( location ){
         var latlng = new google.maps.LatLng( location.k, location.D );
@@ -17,10 +20,10 @@ var Map = React.createClass({
         map.panTo( latlng );
     },
     componentDidMount: function(){
-        this._getGeocode(this.props.zipcode, this._setMapCenter);
+        this._getGeocode(this.props.zipcode).then( this._setMapCenter );
     },
     componentWillReceiveProps: function(nextProps){
-        this._getGeocode(nextProps.zipcode, this._setMapCenter);
+        this._getGeocode(nextProps.zipcode).then( this._setMapCenter );
     },
     shouldComponentUpdate: function(nextProps, nextState){
         return nextProps.zipcode!=this.props.zipcode;
