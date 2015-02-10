@@ -10,7 +10,7 @@ var ZipcodeInput = React.createClass({
         return  {isZipcodeValid: false};
     },
     _validate: function(e){
-        var zipcodeRegex = /^\d{6}$/;
+        var zipcodeRegex = /^\d{5,6}$/;
         var zipcode = e.target.value;
         if( zipcode.length ){
             if( zipcodeRegex.test(zipcode) ){
