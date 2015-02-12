@@ -1,8 +1,7 @@
 'use strict';
 
 var React  = require('react');
-var Router = require('react-router');
-var Q = require('q');
+var Q      = require('q');
 
 var Map = React.createClass({
     _getGeocode: function(zipcode){
