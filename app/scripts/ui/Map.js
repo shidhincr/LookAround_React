@@ -57,7 +57,7 @@ var Map = React.createClass({
         this._getGeocode(nextProps.zipcode).then( this._setMapCenter ).then( this._showPlaces );
     },
     shouldComponentUpdate: function(nextProps, nextState){
-        return nextProps.zipcode!=this.props.zipcode;
+        return nextProps.zipcode!==this.props.zipcode;
     },
     render: function(){
         return (
