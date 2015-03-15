@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var eventEmitter = require('event-emitter');
+var eventEmitter = require('../utils/eventEmitter');
 
 var ListView = React.createClass({
   getInitialState: function() {
@@ -18,13 +18,13 @@ var ListView = React.createClass({
     });
   },
   render: function () {
-    var listItems = this.state.listData.map(function(index, item) {
+    var listItems = this.state.listData.map(function(item, index) {
       return (
-        <tr id={'listItem'+ index}>
-          <td>{index}</td>
-          <td>something</td>
-          <td>som</td>
-          <td>shidhin</td>
+        <tr id={'listItem'+ index } key={item.id}>
+          <td>{index + 1}</td>
+          <td>{item.name}</td>
+          <td>{item.vicinity}</td>
+          <td>{item.geometry.location.D},{item.geometry.location.k}</td>
         </tr>
       )
     });

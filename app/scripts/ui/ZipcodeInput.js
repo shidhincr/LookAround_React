@@ -22,23 +22,24 @@ var ZipcodeInput = React.createClass({
             this.setState({isZipcodeValid: false});
         }
     },
-    _search: function(){
-        window.location = "#/search/"+this.state.zipcode+"/atm";
+    _search: function(event){
+      window.location = "#/search/"+this.state.zipcode+"/atm";
+      event.preventDefault();
     },
     render: function(){
         var zipcodeComponentStyle = {width: '300px'};
         return(
             <div className="zipcodeComponent" style={zipcodeComponentStyle}>
-                <Input
+                <form onSubmit={this._search}>
+                  <Input
                     type="text"
                     placeholder="560068"
                     defaultValue={this.props.zipcode}
-                    buttonAfter={<Button bsStyle="primary" className="goButton" disabled={!this.state.isZipcodeValid} onClick={this._search}>Go</Button>}
+                    buttonAfter={<Button bsStyle="primary" className="goButton" disabled={!this.state.isZipcodeValid} type="submit" onClick={this._search}>Go</Button>}
                     onChange={this._validate}
-                />
-                {this.props.ackWhenValid && this.state.isZipcodeValid &&
-                    <div className="validation-feedback alert-success">Valid zipcode</div>
-                }
+                  />
+                  {this.props.ackWhenValid && this.state.isZipcodeValid && <div className="validation-feedback alert-success">Valid zipcode</div>}
+                </form>
             </div>
         );
     }

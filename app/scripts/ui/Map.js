@@ -2,7 +2,7 @@
 
 var React = require('react');
 var Q = require('q');
-var eventEmitter = require('event-emitter');
+var eventEmitter = require('../utils/eventEmitter');
 
 var Map = React.createClass({
   _getGeocode: function (zipcode) {
