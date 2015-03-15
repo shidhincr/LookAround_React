@@ -37,7 +37,7 @@ var ZipcodeInput = React.createClass({
                     onChange={this._validate}
                 />
                 {this.props.ackWhenValid && this.state.isZipcodeValid &&
-                    <span className="alert-success">Valid zipcode</span>
+                    <div className="validation-feedback alert-success">Valid zipcode</div>
                 }
             </div>
         );
