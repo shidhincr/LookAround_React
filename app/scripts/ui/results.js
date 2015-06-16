@@ -4,6 +4,7 @@ var React = require('react');
 var Map   = require('../ui/Map.js');
 var TabPane = require('react-bootstrap/TabPane');
 var TabbedArea = require('react-bootstrap/TabbedArea');
+var ListView = require('../ui/ListView');
 
 var Results = React.createClass({
     displayName: 'Results',
@@ -15,7 +16,7 @@ var Results = React.createClass({
                         <Map zipcode={this.props.zipcode} place={this.props.place}/>
                     </TabPane>
                     <TabPane eventKey={2} tab="List view">
-                        List of Results here
+                        <ListView></ListView>
                     </TabPane>
                 </TabbedArea>
             </div>

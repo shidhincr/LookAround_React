@@ -2,6 +2,7 @@
   "name": "lookaround-react",
   "version": "0.0.0",
   "dependencies": {
+    "event-emitter": "^0.3.3",
     "lodash": "^2.4.1",
     "q": "^1.1.2",
     "react": "^0.12.2",
@@ -25,7 +26,7 @@
     "gulp-util": "~3.0.1",
     "gulp-webserver": "latest",
     "jest": "latest",
-    "react": "latest",
+    "react": "0.12",
     "reactify": "latest",
     "watchify": "~2.1",
     "browserify-shim": "^3.8.0",
