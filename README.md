@@ -1,6 +1,8 @@
 LookAround_React
 =====================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/shidhincr/LookAround_React.svg)](https://greenkeeper.io/)
+
 Trying to Learn ReactJS and Flux Architecture by creating a simple application. This Repo is a clone of the original  [LookAround](https://github.com/shidhincr/LookAround) application created for learning AngularJS.
 
 
